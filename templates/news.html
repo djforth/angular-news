@@ -1,0 +1,41 @@
+<section class="news-filter">
+  <div class="panel-content">
+    <form>
+      <div id="filter_by_date">
+        <label>Show articles from:</label>
+        <select ng-model="selectedMonth" ng-options="month.txt for month in months">
+          <option value="">Show All</option>
+        </select>
+      </div>
+      <!-- <a>Clear Filters</a> -->
+    </form>
+  </div>
+</section>
+<section class="articles secondary">
+  <article ng-if="filteredNews().length <= 0">
+    <header>
+      <h1 class="gamma">No news available</h1>
+    </header>
+  </article>
+
+  <article ng-repeat="article in filteredNews()" ng-class="{highlight: $first}">
+    <header>
+      <h1 class="gamma"><a ng-href="{{article.path}}" class="heading-link">{{article.headline}}</a></h1>
+      <div class="meta">
+        <div class="date">
+          <span>{{article.fmtPub}}</span>
+        </div>
+      </div>
+    </header>
+    <div class="content-left" ng-if="article.images">
+      <a ng-href="{{article.path}}"><img alt="{{article.images.main.alt}}" ng-src="{{article.images.main.src}}"></a>
+    </div>
+    <div class="content-right" ng-bind-html="article.summary">
+    </div>
+    <div class="content-bottom">
+      <a class="button-cba button-secondary" ng-href="{{article.path}}">Continue reading</a>
+    </div>
+  </article>
+</section>
+
+<div pagination itemsperpage=20 totalitems="itemCount" changed="filteredNews"></div>

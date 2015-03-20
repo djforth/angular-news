@@ -1,0 +1,30 @@
+<article class="clearfix">
+  <div class='row three grey-panel'>
+    <div class="wrap">
+      <h1 id='page_title' class="gg center-t p-sh" aria-level="1">{{article.headline}}</h1>
+      <p class='date center-t km'>Published: {{article.published}}</p>
+   </div>
+  </div>
+  <div class='row four'>
+    <div class="wrap">
+      <div class='article_content'>
+
+        <aside class='article-aside'>
+          <img alt='{{article.images.main.alt}}' ng-if='article.images.main' ng-src='{{article.images.main.src}}'>
+        </aside>
+        <span ng-bind-html='article.body'></span>
+      </div>
+      <div class="clearfix back">
+        <a class='button-tertiary'  ui-sref='blogs()'>
+          &laquo; Back
+        </a>
+      </div>
+
+
+
+    </div>
+  </div>
+</article>
+
+
+
